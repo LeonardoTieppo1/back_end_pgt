@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 'Checkout Github Action' 
-      uses: actions/checkout@main
+      uses: actions/checkout@master
 
     - name: 
       uses: actions/setup-node@v4
