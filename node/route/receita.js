@@ -3,9 +3,11 @@ const cors = require('cors');
 const ReceitaController = require('../controller/receitaController');
 const router = express.Router();
 
-router.use(cors()); // Correção na utilização do middleware cors
+// Adicionando prefixo para todas as rotas
+router.use('/api', cors());
 
-router.get('/receita/:nomeReceita', async (req, res) => {
+// Rota para buscar uma receita por nome
+router.get('/api/receita/:nomeReceita', async (req, res) => {
     try {
         const pesquisa = await ReceitaController.read(req.params.nomeReceita);
         if (pesquisa) {
@@ -19,9 +21,15 @@ router.get('/receita/:nomeReceita', async (req, res) => {
     }
 });
 
-router.get('/receitas', async(req, res) => {
-    const todos = await ReceitaController.readAny()
-    res.json(todos)
-})
+// Rota para buscar todas as receitas
+router.get('/api/receitas', async(req, res) => {
+    try {
+        const todos = await ReceitaController.readAny();
+        res.json(todos);
+    } catch (error) {
+        console.error('Erro ao buscar todas as receitas:', error);
+        res.status(500).json({ resultado: 'Erro interno do servidor' });
+    }
+});
 
 module.exports = router;
