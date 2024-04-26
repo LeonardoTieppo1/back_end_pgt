@@ -9,20 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub Action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: List Contents of Working Directory
         run: ls -al
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: Set up MongoDB
         uses: supercharge/mongodb-github-action@v1
         with:
-            mongodb-uri: "mongodb+srv://Leonardo:tesT123.2@cluster0.kcan61g.mongodb.net/receita?retryWrites=true&w=majority"
+            mongodb-uri: mongodb+srv://Leonardo:tesT123.2@cluster0.kcan61g.mongodb.net/receita?retryWrites=true&w=majority
 
 
       - name: Install Dependencies
