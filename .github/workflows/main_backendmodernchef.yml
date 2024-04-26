@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - BackEndModernChef
+name: Build and deploy Node.js app to Azure Web App - backendmodernchef
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: npm install, build, and test
         run: |
@@ -57,15 +57,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B5AD1DEDA21A4659A9C7059D4A3F235B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_004F0163CD214DEBBF6EFCAB04791A41 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_763A013E97974C8B952393FCAF92CC37 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E0023D4E3804489DBFF418ADFB07415C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B13FA58439FD4320989F9629DBA1F0D9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B1A5292265B642238358375F2BB58449 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'BackEndModernChef'
+          app-name: 'backendmodernchef'
           slot-name: 'Production'
           package: .
           
