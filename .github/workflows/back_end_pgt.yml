@@ -1,27 +1,27 @@
 name: Deploy to Azure App Service
-on: 
-    push:
-        branches:
-                -main
-         
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: 'Checkout Github Action' 
-      uses: actions/checkout@master
+      - name: Checkout GitHub Action
+        uses: actions/checkout@v2
 
-    - name: 
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18.x'
-    - name: Install Dependencies
-      run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
 
-    - name: Deploy Azure App Service
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: BackEndModernChef
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: .
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Deploy Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: BackEndModernChef
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
