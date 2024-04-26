@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub Action
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: List Contents of Working Directory
         run: ls -al
@@ -22,6 +22,9 @@ jobs:
       - name: Set up MongoDB
         uses: supercharge/mongodb-github-action@v1
         with:
+            mongodb-version: '4.4'
+
+        env:
             mongodb-uri: mongodb+srv://Leonardo:tesT123.2@cluster0.kcan61g.mongodb.net/receita?retryWrites=true&w=majority
 
 
