@@ -11,17 +11,17 @@ jobs:
       - name: Checkout GitHub Action
         uses: actions/checkout@v2
 
+      - name: List Contents of Working Directory
+        run: ls -al
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'
 
-      - name: Change Directory
-        run: cd back_end_pgt
-
       - name: Install Dependencies
         run: npm install
-        working-directory: back_end_pgt
+        working-directory: .
 
       - name: Deploy Azure App Service
         uses: azure/webapps-deploy@v2
