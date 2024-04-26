@@ -4,10 +4,10 @@ const ReceitaController = require('../controller/receitaController');
 const router = express.Router();
 
 // Adicionando prefixo para todas as rotas
-router.use('/api', cors());
+router.use('/', cors());
 
 // Rota para buscar uma receita por nome
-router.get('/api/receita/:nomeReceita', async (req, res) => {
+router.get('/receita/:nomeReceita', async (req, res) => {
     try {
         const pesquisa = await ReceitaController.read(req.params.nomeReceita);
         if (pesquisa) {
@@ -22,7 +22,7 @@ router.get('/api/receita/:nomeReceita', async (req, res) => {
 });
 
 // Rota para buscar todas as receitas
-router.get('/api/receitas', async(req, res) => {
+router.get('/receitas', async(req, res) => {
     try {
         const todos = await ReceitaController.readAny();
         res.json(todos);
