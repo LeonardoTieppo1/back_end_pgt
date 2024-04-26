@@ -19,10 +19,16 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Set up MongoDB
+        uses: supercharge/mongodb-github-action@v1
+        with:
+            mongodb-uri: "mongodb+srv://Leonardo:tesT123.2@cluster0.kcan61g.mongodb.net/receita?retryWrites=true&w=majority"
+
+
       - name: Install Dependencies
         run: npm install
         working-directory: node
-
+        
       - name: Deploy Azure App Service
         uses: azure/webapps-deploy@v2
         with:
