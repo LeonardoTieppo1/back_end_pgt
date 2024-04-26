@@ -5,7 +5,7 @@ const express = require("express")
 const receitaRoute = require('./route/receita');
 const app = express();
 
-app.use(receitaRoute);
+app.use('/api',receitaRoute);
 
 app.get("/", (req, res) => {
     res.send('Hello World!')
