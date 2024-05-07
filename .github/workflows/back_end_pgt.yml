@@ -19,9 +19,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build and Package Application (Assuming a build script exists)
-        run: npm run build  # Replace with your build command
-
       - name: Deploy Azure App Service (Conditional Execution)
         run: |
           if [[ ${{ env.DEPLOY_CONDITION }} == "ZIP_DEPLOY" ]]; then
