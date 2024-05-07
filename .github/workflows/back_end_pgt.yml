@@ -11,21 +11,11 @@ jobs:
       - name: Checkout GitHub Action
         uses: actions/checkout@v4
 
-      - name: List Contents of Working Directory
-        run: ls -al
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-
-      - name: Set up MongoDB
-        uses: supercharge/mongodb-github-action@v1
-        with:
-            mongodb-version: '4.4'
-
-        env:
-            mongodb-uri: mongodb+srv://Leonardo:tesT123.2@cluster0.kcan61g.mongodb.net/receita?retryWrites=true&w=majority
 
       - name: Install Dependencies
         run: npm install
@@ -36,3 +26,4 @@ jobs:
           app-name: BackEndModernChef
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
+          verbose: true
