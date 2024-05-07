@@ -27,7 +27,6 @@ jobs:
         env:
             mongodb-uri: mongodb+srv://Leonardo:tesT123.2@cluster0.kcan61g.mongodb.net/receita?retryWrites=true&w=majority
 
-
       - name: Install Dependencies
         run: npm install
         
