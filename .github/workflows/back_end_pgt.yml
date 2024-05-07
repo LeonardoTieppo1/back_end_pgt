@@ -1,4 +1,5 @@
 name: Deploy to Azure App Service
+
 on:
   push:
     branches:
@@ -19,14 +20,13 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Deploy Azure App Service (Conditional Execution)
-        run: |
-          if [[ ${{ env.DEPLOY_CONDITION }} == "ZIP_DEPLOY" ]]; then
-            # ZIP Deployment Logic (e.g., using Azure CLI)
-            az webapp deploy --resource-group <your-resource-group> --name BackEndModernChef --zip-deploy .
-          else
-            # Alternative Deployment Logic (if not ZIP deployment)
-            echo "Skipping deployment as ZIP condition not met."
-          fi
-        env:
-          AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+      - name: Build for Deployment
+        run: npm run build  # Assuming you have a build script in your package.json
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: BackEndModernChef
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: './*'  # Deploy all files from the project root
+
