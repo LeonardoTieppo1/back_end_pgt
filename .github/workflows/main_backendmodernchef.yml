@@ -67,4 +67,3 @@ jobs:
           app-name: 'backendmodernchef'
           slot-name: 'Production'
           package: .
-            **increase-time-out:** 300 # Increase timeout to 5 minutes (300 seconds)
