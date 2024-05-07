@@ -52,7 +52,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -67,4 +67,4 @@ jobs:
           app-name: 'backendmodernchef'
           slot-name: 'Production'
           package: .
-          
+            **increase-time-out:** 300 # Increase timeout to 5 minutes (300 seconds)
