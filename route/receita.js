@@ -7,7 +7,7 @@ const router = express.Router();
 router.use('/', cors());
 
 // Rota para buscar uma receita por nome
-router.get('/receita/:nomeReceita', async (req, res) => {
+router.get('/receita/:nomeReceita', async(req, res) => {
     try {
         const pesquisa = await ReceitaController.read(req.params.nomeReceita);
         if (pesquisa) {

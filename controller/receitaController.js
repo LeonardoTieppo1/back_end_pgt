@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Receita = require('../model/receita');
 
-const read = async (nomeReceita) => {
+const read = async(nomeReceita) => {
     try {
         const receita = await Receita.findOne({ nome_receita: nomeReceita }).exec();
         return receita;
@@ -11,7 +11,7 @@ const read = async (nomeReceita) => {
     }
 }
 
-const readAny = async () => {
+const readAny = async() => {
     try {
         const receitas = await Receita.find().exec();
         return receitas;
