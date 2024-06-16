@@ -33,10 +33,10 @@ router.get('/receitas', async(req, res) => {
 });
 
 //Rota de adicionar receitas: Post
-router.post("/novaReceita",async(req,res)=>{
+router.post("/novaReceita",upload.single('imagem'),async(req,res)=>{
     const novaReceita=req.body;
     try{
-        const result= await create(novaReceita)
+        const result= await create(novaReceita,req.file)
         res.json(result);
     }catch(error){
         console.error("Erro ao adicionar receita")

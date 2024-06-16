@@ -21,10 +21,14 @@ const readAny = async() => {
     }
 }
 
-const create = async (novaReceita) =>{
+const create = async (novaReceita,file) =>{
     try{
         const receitas = new Receita(novaReceita)
+        if (file) {
+            novaReceita.imagem = file.buffer;
+        }
         await receitas.save();
+        
         return {message:"Receita salva com sucesso"}
     } catch(err){
         console.error(err);
