@@ -6,10 +6,10 @@ const router = express.Router();
 // Adicionando prefixo para todas as rotas
 router.use('/', cors());
 
-// Rota para buscar uma receita por nome
-router.get('/receita/:nomeReceita', async(req, res) => {
+// Rota para buscar uma receita por nome: Get(nomeReceita)
+router.get('/receita/:nome', async(req, res) => {
     try {
-        const pesquisa = await ReceitaController.read(req.params.nomeReceita);
+        const pesquisa = await ReceitaController.read(req.params.nome);
         if (pesquisa) {
             res.json({ resultado: 'Consulta realizada com sucesso', receita: pesquisa });
         } else {
@@ -21,7 +21,7 @@ router.get('/receita/:nomeReceita', async(req, res) => {
     }
 });
 
-// Rota para buscar todas as receitas
+// Rota para buscar todas as receitas: Get:any
 router.get('/receitas', async(req, res) => {
     try {
         const todos = await ReceitaController.readAny();
@@ -31,5 +31,17 @@ router.get('/receitas', async(req, res) => {
         res.status(500).json({ resultado: 'Erro interno do servidor' });
     }
 });
+
+//Rota de adicionar receitas: Post
+router.post("/novaReceita",async(req,res)=>{
+    const novaReceita=req.body;
+    try{
+        const result= await create(novaReceita)
+        res.json(result);
+    }catch(error){
+        console.error("Erro ao adicionar receita")
+        res.status(500).json({resultado: "Erro interno do servidor"})
+    }
+})
 
 module.exports = router;

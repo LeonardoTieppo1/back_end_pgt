@@ -21,7 +21,20 @@ const readAny = async() => {
     }
 }
 
+const create = async (novaReceita) =>{
+    try{
+        const receitas = new Receita(novaReceita)
+        await receitas.save();
+        return {message:"Receita salva com sucesso"}
+    } catch(err){
+        console.error(err);
+        throw(err);
+    }
+}
+
+
 module.exports = {
     read,
-    readAny
+    readAny,
+    create
 };
