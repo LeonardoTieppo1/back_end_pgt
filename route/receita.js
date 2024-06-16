@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const multer = require('multer');
 const ReceitaController = require('../controller/receitaController');
 const router = express.Router();
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 // Adicionando prefixo para todas as rotas
 router.use('/', cors());
