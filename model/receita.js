@@ -8,7 +8,7 @@ const receitaSchema=mongoose.Schema({
     porções:{type:Number},
     tipo:{type:String},
     nutrientes:[{nome:{type:String},quantidade:{type:Number}}],
-    image:{type:Buffer,contentType:string}
+    imagem:{type:Buffer,contentType:string}
 
 })
 
