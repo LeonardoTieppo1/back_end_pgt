@@ -12,7 +12,7 @@ const receitaSchema=mongoose.Schema({
 
 })
 
-const Receita = mongoose.model('receitas2',receitaSchema,'receitas2')
+const Receita = mongoose.model('receitas2',receitaSchema,'receitas')
 
 
 module.exports= Receita;

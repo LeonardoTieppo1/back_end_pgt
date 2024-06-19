@@ -36,15 +36,15 @@ router.get('/receitas', async(req, res) => {
 });
 
 //Rota de adicionar receitas: Post
-router.post("/novaReceita",upload.single('imagem'),async(req,res)=>{
-    const novaReceita=req.body;
-    try{
-        const result= await create(novaReceita,req.file)
+router.post("/novaReceita", upload.single('imagem'), async (req, res) => {
+    const novaReceita = req.body;
+    try {
+        const result = await create(novaReceita, req.file)
         res.json(result);
-    }catch(error){
+    } catch (error) {
         console.error("Erro ao adicionar receita")
-        res.status(500).json({resultado: "Erro interno do servidor"})
+        res.status(500).json({ resultado: "Erro interno do servidor" })
     }
-})
+});
 
 module.exports = router;
